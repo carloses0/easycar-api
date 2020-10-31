@@ -43,4 +43,9 @@ public class ProdutoController {
     public ResponseEntity<?> save(@Valid @RequestBody Produto produto) {
         return new ResponseEntity<>(produtoDao.save(produto), HttpStatus.OK);
     }
+
+    @PutMapping(path = "/update")
+    public ResponseEntity<?> update(@Valid @RequestBody Produto produto) {
+        return new ResponseEntity<>(produtoDao.save(produto), HttpStatus.OK);
+    }
 }

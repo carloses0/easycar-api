@@ -42,4 +42,9 @@ public class ServicoController {
     public ResponseEntity<?> save(@Valid @RequestBody Servico servico) {
         return new ResponseEntity<>(servicoDao.save(servico), HttpStatus.OK);
     }
+
+    @PutMapping(path = "/update")
+    public ResponseEntity<?> update(@Valid @RequestBody Servico servico) {
+        return new ResponseEntity<>(servicoDao.save(servico), HttpStatus.OK);
+    }
 }
