@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+//@Embeddable
 public class Veiculo implements Serializable {
     private  static final long serialVersionUID = 1L;
 

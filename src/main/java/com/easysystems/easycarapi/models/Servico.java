@@ -1,14 +1,12 @@
 package com.easysystems.easycarapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+//@Embeddable
 public class Servico implements Serializable {
     private static final long serialVersionUID = 1L;
 

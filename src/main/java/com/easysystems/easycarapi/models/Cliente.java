@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Embeddable
 public class Cliente extends AbstractEntity implements Serializable {
     private  static final long serialVersionUID = 1L;
 

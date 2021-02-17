@@ -1,32 +1,34 @@
 package com.easysystems.easycarapi.models;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class OrdemServico implements Serializable {
     private  static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Date dataInicio;
 
     private Date dataFinal;
 
+    @ManyToOne
     private Cliente cliete;
 
+    @ManyToOne
     private Veiculo veiculo;
 
+    @OneToMany
     private List<Servico> servico;
 
+    @OneToMany
     private List<Item> itens;
 
     private BigDecimal orcamento;

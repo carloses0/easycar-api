@@ -34,7 +34,7 @@ public class OrdemServicoController {
         return new ResponseEntity<>(osDao.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping(path = "/{id}")
     public ResponseEntity<?> getOsByid(@PathVariable("id") Long id) {
         OrdemServico os = osDao.findById(id).orElse(null);
         if (os == null){
