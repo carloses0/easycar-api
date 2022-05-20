@@ -30,6 +30,11 @@ public class VeiculoController {
         this.clienteService = clienteService;
     }
 
+    @GetMapping
+    public ResponseEntity<?> listAll() {
+        return new ResponseEntity<>(veiculoDao.findAll(), HttpStatus.OK);
+    }
+
     @PostMapping(path = "/addVeiculo/{id}")
     public ResponseEntity<?> addVeiculo(@PathVariable("id") Long id, @RequestBody Veiculo ve) {
         Cliente cl = clienteDao.findById(id).orElse(null);

@@ -1,12 +1,12 @@
 package com.easysystems.easycarapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-//@Embeddable
 public class Servico implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -19,16 +19,28 @@ public class Servico implements Serializable {
 
     private String tipo;
 
-
-
     private String descricao;
 
-    private BigDecimal valor;
+    private Double valor;
 
     private String duracao;
 
+    @ManyToOne
+    @JoinColumn(name = "orcamento_id")
+    @JsonIgnore
+    private Orcamento orcamento;
+
     public Servico() {
     }
+
+    public Orcamento getOrcamento() {
+        return orcamento;
+    }
+
+    public void setOrcamento(Orcamento orcamento) {
+        this.orcamento = orcamento;
+    }
+
 
     public String getNome() {
         return nome;
@@ -62,11 +74,11 @@ public class Servico implements Serializable {
         this.descricao = descricao;
     }
 
-    public BigDecimal getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 

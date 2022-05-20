@@ -1,4 +1,7 @@
 package com.easysystems.easycarapi.repository;
 
-public interface OrcamentoRepository {
+import com.easysystems.easycarapi.models.Orcamento;
+import org.springframework.data.repository.CrudRepository;
+
+public interface OrcamentoRepository extends CrudRepository<Orcamento, Long> {
 }

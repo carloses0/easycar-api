@@ -17,6 +17,8 @@ public class Item implements Serializable {
 
     private Produto produto;
 
+    private Servico servico;
+
 
     public Long getId() {
         return id;
@@ -40,5 +42,13 @@ public class Item implements Serializable {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 }

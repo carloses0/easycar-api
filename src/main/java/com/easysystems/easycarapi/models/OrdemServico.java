@@ -20,7 +20,7 @@ public class OrdemServico implements Serializable {
     private Date dataFinal;
 
     @ManyToOne
-    private Cliente cliete;
+    private Cliente cliente;
 
     @ManyToOne
     private Veiculo veiculo;
@@ -31,9 +31,15 @@ public class OrdemServico implements Serializable {
     @OneToMany
     private List<Item> itens;
 
-    private BigDecimal orcamento;
+    @OneToOne
+    private Orcamento orcamento;
 
     private String status;
+
+    private String problemas;
+
+    @ManyToOne
+    private Tecnico tecnico;
 
 
     public Long getId() {
@@ -60,12 +66,12 @@ public class OrdemServico implements Serializable {
         this.dataFinal = dataFinal;
     }
 
-    public Cliente getCliete() {
-        return cliete;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setCliete(Cliente cliete) {
-        this.cliete = cliete;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Veiculo getVeiculo() {
@@ -92,11 +98,11 @@ public class OrdemServico implements Serializable {
         this.itens = itens;
     }
 
-    public BigDecimal getOrcamento() {
+    public Orcamento getOrcamento() {
         return orcamento;
     }
 
-    public void setOrcamento(BigDecimal orcamento) {
+    public void setOrcamento(Orcamento orcamento) {
         this.orcamento = orcamento;
     }
 
@@ -106,5 +112,21 @@ public class OrdemServico implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getProblemas() {
+        return problemas;
+    }
+
+    public void setProblemas(String problemas) {
+        this.problemas = problemas;
+    }
+
+    public Tecnico getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(Tecnico tecnico) {
+        this.tecnico = tecnico;
     }
 }

@@ -1,12 +1,9 @@
 package com.easysystems.easycarapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +15,7 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private BigDecimal valor;
+    private Double valor;
 
     private String descricao;
 
@@ -26,10 +23,12 @@ public class Produto implements Serializable {
 
     private String marca;
 
-    private Fornecedor Forcenedor;
+    private Integer qtd;
 
-    private String categoria;
-
+    @ManyToOne
+    @JoinColumn(name = "orcamento_id")
+    @JsonIgnore
+    private Orcamento orcamento;
 
     public Produto() {
     }
@@ -42,11 +41,11 @@ public class Produto implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
@@ -74,20 +73,20 @@ public class Produto implements Serializable {
         this.marca = marca;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public Orcamento getOrcamento() {
+        return orcamento;
     }
 
-    public void setCategorias(String categoria) {
-        this.categoria = categoria;
+    public void setOrcamento(Orcamento orcamento) {
+        this.orcamento = orcamento;
     }
 
-    public Fornecedor getForcenedor() {
-        return Forcenedor;
+    public Integer getQtd() {
+        return qtd;
     }
 
-    public void setForcenedor(Fornecedor forcenedor) {
-        Forcenedor = forcenedor;
+    public void setQtd(Integer qtd) {
+        this.qtd = qtd;
     }
 
     @Override

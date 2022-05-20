@@ -1,11 +1,9 @@
 package com.easysystems.easycarapi.Controllers;
 
-import com.easysystems.easycarapi.models.Cliente;
 import com.easysystems.easycarapi.models.OrdemServico;
-import com.easysystems.easycarapi.repository.ClienteRepository;
 import com.easysystems.easycarapi.repository.OrdemServicoRepository;
-import com.easysystems.easycarapi.services.ClienteService;
 import com.easysystems.easycarapi.services.OrdemServicoService;
+import com.easysystems.easycarapi.services.RelatorioService;
 import exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,10 +21,13 @@ public class OrdemServicoController {
 
     private OrdemServicoService osService;
 
+    private RelatorioService relService;
+
     @Autowired
-    public OrdemServicoController(OrdemServicoRepository dao, OrdemServicoService osService) {
+    public OrdemServicoController(OrdemServicoRepository dao, OrdemServicoService osService, RelatorioService relService) {
         this.osDao = dao;
         this.osService = osService;
+        this.relService = relService;
     }
 
     @GetMapping
@@ -46,7 +47,8 @@ public class OrdemServicoController {
 
     @PostMapping(path = "/save")
     public ResponseEntity<?> save(@Valid @RequestBody OrdemServico os) {
-        return new ResponseEntity<>(osDao.save(os), HttpStatus.OK);
+        OrdemServico osRes = osDao.save(os);
+        return new ResponseEntity<>(osRes, HttpStatus.OK);
     }
 
     @PutMapping

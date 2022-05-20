@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Embeddable
 public class Cliente extends AbstractEntity implements Serializable {
     private  static final long serialVersionUID = 1L;
 
@@ -23,6 +22,7 @@ public class Cliente extends AbstractEntity implements Serializable {
 
     @OneToMany( mappedBy = "cliente", targetEntity = Endereco.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Endereco> enderecos;
+
 
     public Cliente() {
     }
